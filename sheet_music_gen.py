@@ -43,7 +43,7 @@ bass_octaves = [
 ]
 
 def gen_bar(clef='treble'):
-    return " ".join([make_note(clef) for i in range(4)]) + " | "
+    return " ".join([make_note(clef) for i in range(4)]) + " " # + " | "
 
 
 def make_note(clef='treble'):
@@ -74,8 +74,8 @@ def main():
         template = f_template.read()
         f_template.close()
 
-    template = template.replace("%REPLACE_TREBLE1%", gen_staff('treble'))
-    template = template.replace("%REPLACE_BASS1%", gen_staff('bass'))
+    template = template.replace("%REPLACE_TREBLE%", gen_staff('treble'))
+    template = template.replace("%REPLACE_BASS%", gen_staff('bass'))
 
     filename = "drill_" + str(time.time()).replace('.', '_')
     template = template.replace("%REPLACE_TITLE%", filename)
