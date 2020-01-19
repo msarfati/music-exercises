@@ -84,7 +84,7 @@ def main():
     with open(ly_out_path, "w+") as ly_out:
         ly_out.write(template)
         ly_out.close()
-
+    print(ly_out_path)
 
 if __name__ == "__main__":
     main()
