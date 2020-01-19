@@ -5,16 +5,6 @@ import random
 import sys
 import time
 
-piano_o4 = [
-    'C4',
-    'D4',
-    'E4',
-    'F4',
-    'G4',
-    'A4',
-    'B4',
-]
-
 string_list = [
     'E4',
     'B3',
@@ -35,11 +25,11 @@ natural_notes = [
 ]
 
 sharp_notes = [
-    'C#',
-    'D#',
-    'F#',
-    'G#',
-    'A#',
+    'C♯',
+    'D♯',
+    'F♯',
+    'G♯',
+    'A♯',
 ]
 
 flat_notes = [
@@ -96,6 +86,8 @@ play_list = [
 
 play_list = [*itertools.chain(*play_list)]
 
+octaves = [str(i) for i in range(2,6)]  # Octaves 2 - 5
+
 exercises = 1
 
 def main():
@@ -103,7 +95,10 @@ def main():
     turn = 1
     while True:
         for i in range(exercises):
-            drill = random.choice(play_list)
+            # drill = random.choice(play_list)
+            # octave = random.choice(octaves)
+            octave = ''
+            drill = random.choice(play_list) + octave
             print('{0})\t {1}'.format(turn, drill))
             voice.say(drill)
             voice.runAndWait()

@@ -77,7 +77,10 @@ def main():
     template = template.replace("%REPLACE_TREBLE1%", gen_staff('treble'))
     template = template.replace("%REPLACE_BASS1%", gen_staff('bass'))
 
-    ly_out_path = str(time.time()).replace('.', '_') + ".ly"
+    filename = "drill_" + str(time.time()).replace('.', '_')
+    template = template.replace("%REPLACE_TITLE%", filename)
+
+    ly_out_path = filename + ".ly"
     with open(ly_out_path, "w+") as ly_out:
         ly_out.write(template)
         ly_out.close()

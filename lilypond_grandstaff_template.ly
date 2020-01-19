@@ -1,6 +1,6 @@
 \version "2.18.2"
 \header {
-  title = "Random Drills"
+  title = "%REPLACE_TITLE%"
   composer = "Michael Sarfati"
 }
 
