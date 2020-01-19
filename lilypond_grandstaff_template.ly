@@ -3,7 +3,6 @@
     title = "%REPLACE_TITLE%"
     composer = "Michael Sarfati"
 }
-
 \absolute {
     <<
         \new Staff { \clef "treble" %REPLACE_TREBLE1%  }
