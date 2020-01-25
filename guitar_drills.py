@@ -82,7 +82,7 @@ barre_chords = [*itertools.chain(*[
 # ])
 
 frets = {
-    # 'A': ['A2', 'B2', 'C3', 'D3', 'E3', 'F3', 'G3', 'A3'],
+    'A': ['A2', 'B2', 'C3', 'D3', 'E3', 'F3', 'G3', 'A3'],
     'E': ['E2', 'F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3'],
 }
 
@@ -103,7 +103,7 @@ def random_fret(turn, voice):
     drill_root = random.choice(tuple(frets))
     drill = random.choice(frets[drill_root])
     print('{0})\t {1} on {2}'.format(turn, drill, drill_root))
-    voice.say("{0} on {1}".format(drill, drill_root))
+    voice.say("{0}, on {1}.".format(drill, drill_root))
     voice.runAndWait()
 
 
@@ -118,7 +118,7 @@ def random_barre_chord(turn, voice):
     drill_root = random.choice(
         [
             'E',
-            # 'A',
+            'A',
         ]
     )
     drill = random.choice(barre_chords)
