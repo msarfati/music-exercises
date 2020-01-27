@@ -35,8 +35,8 @@ accidentals = [
     '♯',
     '♭',
     '♮',
-    'double ♭',  # 𝄫
-    'double 𝄪',  # 𝄪
+    # 'double ♭',  # 𝄫
+    # 'double ♯',  # 𝄪
 ]
 
 interval_state = [
@@ -67,6 +67,14 @@ def major_or_perfect(turn, voice):
     voice.say("{0}".format(interval_name))
     voice.runAndWait()
 
+def identify_interval(turn, voice):
+    interval = random.choice(tuple(scale_degrees))
+    interval_name = random.choice(scale_degrees[interval])
+    accidental = random.choice(accidentals)
+    print('{0})\t {1} {2}'.format(turn, interval, accidental))
+    voice.say("{0}{1}".format(interval_name, accidental))
+    voice.runAndWait()
+
 
 exercises = 1
 
@@ -75,7 +83,8 @@ def main():
     turn = 1
     while True:
         for i in range(exercises):
-            major_or_minor(turn, voice)
+            # major_or_perfect(turn, voice)
+            identify_interval(turn, voice)
         if "q" == input():
             sys.exit(0)
         else:
