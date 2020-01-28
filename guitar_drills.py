@@ -8,10 +8,10 @@ import time
 standard_tuning = [
     'E',
     'A',
-    'D',
-    'G',
-    'B',
-    'e',
+    # 'D',
+    # 'G',
+    # 'B',
+    # 'e',
 ]
 
 string_list = [
@@ -95,6 +95,19 @@ frets = {
     'E': ['E2', 'F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3'],
 }
 
+open_chords = [
+    'C',
+    'D',
+    'Dm',
+    'E',
+    'Em',
+    # 'F',
+    'F7',
+    'G',
+    'Am',
+    'A',
+]
+
 play_list = [
     # piano_o4,
     # string_list,
@@ -114,6 +127,13 @@ def random_fret(turn, voice):
     print('{0})\t {1} on {2}'.format(turn, drill, drill_root))
     voice.say("{0}, on {1}.".format(drill, drill_root))
     voice.runAndWait()
+
+
+def random_open_chord(turn, times=1):
+    drill = set()
+    while drill.__len__() != times:
+        drill.add(random.choice(open_chords))
+    print('{0})\t {1}'.format(turn, '  '.join(drill)))
 
 
 def random_playlist(turn, voice):
@@ -139,9 +159,12 @@ def random_barre_chord(turn, voice):
 def natural_note_drills(turn, voice):
     string = random.choice(standard_tuning)
     note = random.choice(natural_notes)
-    print('{0})\t {1} on {2} string'.format(turn, note, string))
-    voice.say("{0}, on the {1} string.".format(note, string))
-    voice.runAndWait()
+    if string == note:
+        natural_note_drills(turn, voice)
+    else:
+        print('{0})\t {1} on {2} string'.format(turn, note, string))
+        voice.say("{0}, on the {1} string.".format(note, string))
+        voice.runAndWait()
 
 
 play_list = [*itertools.chain(*play_list)]
@@ -159,7 +182,8 @@ def main():
             # octave = random.choice(octaves)
             # random_fret(turn, voice)
             # random_barre_chord(turn, voice)
-            natural_note_drills(turn, voice)
+            # natural_note_drills(turn, voice)
+            random_open_chord(turn, 4)
             # print('{0})\t {1}{2}'.format(turn, random.choice(play_list), random.choice(range(2, 6))))  # w/ octaves
         if "q" == input():
             sys.exit(0)
